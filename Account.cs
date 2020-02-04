@@ -8,21 +8,30 @@ namespace P1
 {
     abstract class Account
     {
-        public string AccountNumber;
-        public decimal Balance;
-        public string FirstName;
-        public string LastName;
-        public long Pesel;
+        public int Id { get; }
+        public string AccountNumber { get; }
+        public decimal Balance { get; }
+        public string FirstName { get; }
+        public string LastName { get; }
+        public long Pesel { get; }
 
-        public Account(string accountNumber, decimal balance, string firstName, string lastName, long pesel)
+        public Account(int id, string firstName, string lastName, long pesel)
         {
-            AccountNumber = accountNumber;
-            Balance = balance;
+            Id = id;
+            AccountNumber = GenerateAccountNumber(id);
+            Balance = 0.0M;
             FirstName = firstName;
             LastName = lastName;
             Pesel = pesel;
         }
         public abstract string TypeName();
+
+        private string GenerateAccountNumber(int id)
+        {
+            var accountNumber = string.Format("94{0:D10}", id);
+
+            return accountNumber;
+        }
 
         public string GetFullName()
         {

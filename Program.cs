@@ -16,30 +16,17 @@ namespace P1
             Console.WriteLine(author);
             Console.WriteLine();
 
+            AccountMenager manager = new AccountMenager();
+            manager.CreateBillingAccount("Marek", "Zajac", 1234567890);
+            manager.CreateSavingsAccount("Marek", "Zajac", 1234567890);
+            manager.CreateSavingsAccount("Aaaaa", "Bbbbb", 0987654321);
+
+            IList<Account> accounts = (IList<Account>)manager.GetAllAccounts();
+
             Printer printer = new Printer();
 
-            Account account;
-            account = new SavingsAccount("940000000001", 0.0M, "AA", "BB", 92010133333);
-            Console.WriteLine(account.TypeName());
-
-            account = new SavingsAccount("940000000002", 0.0M, "CC", "DD", 92010132157);
-            Console.WriteLine(account.TypeName());
-
-            account = new BillingAccount("940000000003", 0.0M, account.FirstName, account.LastName, account.Pesel);
-            Console.WriteLine(account.TypeName());
-
-            string fullName = account.GetFullName();
-            Console.WriteLine("Pierwsze konto w systemie dostał(-a): {0}", fullName);
-            Console.WriteLine();
-
-            string Balance = account.GetBalance();
-            Console.WriteLine("{0}", Balance);
-            Console.WriteLine();
-
-            printer.Print(account);
-            printer.Print(account);
-            printer.Print(account);
-
+            printer.Print(accounts[0]);
+            printer.Print(accounts[2]);
 
             Console.ReadKey();
         }

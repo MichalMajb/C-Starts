@@ -44,11 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AccountMenager.cs" />
     <Compile Include="BillingAccount.cs" />
+    <Compile Include="IPrinter.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavingsAccount.cs" />
+    <Compile Include="SmallerPrinter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
