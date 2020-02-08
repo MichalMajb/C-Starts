@@ -11,8 +11,11 @@ namespace P1
 
 
         public BillingAccount(int id, string firstName, string lastName, long pesel) 
-            : base(id, firstName, lastName, pesel)
+            : base(id, firstName, lastName, pesel){
+        }
+        public void TakeCharge(decimal value)
         {
+           Balance -= value;
         }
         public override string TypeName()
         {

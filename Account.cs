@@ -10,7 +10,7 @@ namespace P1
     {
         public int Id { get; }
         public string AccountNumber { get; }
-        public decimal Balance { get; }
+        public decimal Balance;
         public string FirstName { get; }
         public string LastName { get; }
         public long Pesel { get; }
@@ -42,6 +42,10 @@ namespace P1
         public string GetBalance()
         {
             return string.Format("Balans: {0}zł", Balance);
+        }
+        public void ChangeBalance(decimal value)
+        {
+            Balance += value;
         }
     }
 }

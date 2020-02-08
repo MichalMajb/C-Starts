@@ -25,8 +25,17 @@ namespace P1
 
             Printer printer = new Printer();
 
-            printer.Print(accounts[0]);
-            printer.Print(accounts[2]);
+            foreach (Account account in accounts)
+            {
+                printer.Print(account);
+            }
+
+            IEnumerable<string> users = manager.ListOfCustomers();
+
+            foreach (string user in users)
+            {
+                Console.WriteLine(user);
+            }
 
             Console.ReadKey();
         }
