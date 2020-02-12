@@ -14,11 +14,13 @@ namespace P1
         {
             _accounts = new List<Account>();
         }
-        public IEnumerable<Account> GetAllAccounts()
+
+        public IEnumerable<Account> GetAllAccounts()            //List of account
         {
             return _accounts;
         }
-        private int generateId()
+
+        private int generateId()              
         {
             int id = 1;
 
@@ -51,18 +53,22 @@ namespace P1
 
             return account;
         }
-        public IEnumerable<Account> GetAllAccountsFor(string firstName, string lastName, long pesel)
+
+        public IEnumerable<Account> GetAllAccountsFor(string firstName, string lastName, long pesel)                //List of customer account
         {
             return _accounts.Where(x => x.FirstName == firstName && x.LastName == lastName && x.Pesel == pesel);
         }
+
         public Account GetAccount(string accountNo)
         {
             return _accounts.Single(x => x.AccountNumber == accountNo);
         }
+
         public IEnumerable<string> ListOfCustomers()
         {
             return _accounts.Select(a => string.Format("Imię: {0} | Nazwisko: {1} | PESEL: {2}", a.FirstName, a.LastName, a.Pesel)).Distinct();
         }
+
         public void CloseMonth()
         {
             foreach (SavingsAccount account in _accounts.Where(x => x is SavingsAccount))
@@ -75,6 +81,7 @@ namespace P1
                 account.TakeCharge(5.0M);
             }
         }
+
         public void AddMoney(string accountNo, decimal value)
         {
             Account account = GetAccount(accountNo);

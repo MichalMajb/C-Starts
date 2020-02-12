@@ -45,6 +45,11 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="AccountMenager.cs" />
+    <Compile Include="Action.cs" />
+    <Compile Include="ChengerMoney.cs" />
+    <Compile Include="IChangerMoney.cs" />
+    <Compile Include="IAction.cs" />
+    <Compile Include="BankManager.cs" />
     <Compile Include="BillingAccount.cs" />
     <Compile Include="IPrinter.cs" />
     <Compile Include="Printer.cs" />
