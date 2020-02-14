@@ -9,23 +9,6 @@ using System.Threading.Tasks;
 
 namespace P1
 {
-    class CustomerData
-    {
-        public string FirstName { get;}
-        public string LasttName { get; }
-        public long Pesel { get; }
-
-        public CustomerData(string firstName, string lastName, string pesel)
-        {
-            FirstName = firstName;
-            LasttName = lastName;
-            Pesel = long.Parse(pesel);
-        }
-
-    }
-
-
-
     class BankManager
     {
         private AccountMenager _accountMenager;
@@ -66,6 +49,7 @@ namespace P1
 
         public void Run()                   //Loop of Runtime program and selector of actions
         {
+
             int action;
             do
             {
@@ -75,28 +59,21 @@ namespace P1
                 switch (action)
                 {
                     case 1:
-                        Console.Clear();
-                        Console.WriteLine("Wybrano listę kont klienta");
-                        ListOfAccount();
+                        ListOfAccount.PrintListOfAccount("Wybrano listę kont klienta");
                         Console.ReadKey();
                         break;
                     case 2:
-                        Console.Clear();
-                        Console.WriteLine("Wybrano otwarcie konta rozliczeniowego");
-                        AddBillingAccount();
+                        AddBillingAccount.AdderBilingAccount("Wybrano dodanie nowego konta rozliczeniowego");
                         Console.ReadKey();
                         break;
                     case 3:
-                        Console.Clear();
-                        Console.WriteLine("Wybrano otwarcie konta oszczędnościowego");
-                        AddSavingAccount();
+                        AddSavingsAccount.AdderSavingsAccount("Wybrano dodanie nowego konta oszczędnościowego");
                         Console.ReadKey();
                         break;
                     case 4:
                         Console.Clear();
                         Console.WriteLine("Wybrano wpłatę/wypłatę pieniędzy na konto");
                         ChangeMoney();
-                        Console.ReadKey();
                         break;
                     case 5:
                         Console.Clear();
@@ -123,49 +100,7 @@ namespace P1
             }
             while (action != 0);
         }
-        private void ListOfAccount()                //Using object to get a List of Account
-        {
-            Console.Clear();
-            CustomerData data = ReadCustomerData();
 
-        }
-
-        private CustomerData ReadCustomerData()                     //Read basic information about customer
-        {
-            string firstName;
-            string lastName;
-            string pesel;
-            Console.WriteLine("Podaj dane klienta:");
-            Console.Write("Imię:");
-            firstName = Console.ReadLine();
-            Console.Write("Nazwisko:");
-            lastName = Console.ReadLine();
-            Console.Write("PESEL:");
-            pesel = Console.ReadLine();
-
-            return new CustomerData(firstName, lastName, pesel);
-        }
-
-        private void AddBillingAccount()                        
-        {
-            Console.Clear();
-            CustomerData data = ReadCustomerData();
-            Account bilingAccount = _accountMenager.CreateBillingAccount(data.FirstName, data.LasttName, data.Pesel);
-
-            Console.WriteLine("Utworzono konto rozliczeniowe:");
-            _printer.Print(bilingAccount);
-            Console.ReadKey();
-        }
-        private void AddSavingAccount()
-        {
-            Console.Clear();
-            CustomerData data = ReadCustomerData();
-            Account savingAccount = _accountMenager.CreateSavingsAccount(data.FirstName, data.LasttName, data.Pesel);
-
-            Console.WriteLine("Utworzono konto oszczędnościowe:");
-            _printer.Print(savingAccount);
-            Console.ReadKey();
-        }
         private void ChangeMoney()
         {
             ChengerMoney chenger = new ChengerMoney();

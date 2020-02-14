@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace P1
 {
-    abstract class Action: IAction
+    abstract class Action
     {
-        public void MakeAction()
+        protected static void MakeAction(string text)
         {
-
+            Console.Clear();
+            Console.WriteLine(text);
+            Console.WriteLine("Naciśnij dowolny klawisz");
+            Console.ReadKey();
         }
     }
+    
 }
