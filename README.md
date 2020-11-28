@@ -1,2 +1,2 @@
 # P1
-Learning C#, simple banck software
+Learning C#, simple bank software
